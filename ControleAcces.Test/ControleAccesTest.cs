@@ -4,6 +4,7 @@ namespace ControleAcces.Test
 {
     public class ControleAccesTest
     {
+        #region MVP
         [Fact]
         public void CasNominal()
         {
@@ -112,5 +113,28 @@ namespace ControleAcces.Test
             // ALORS cette porte s'ouvre une fois
             Assert.Equal(1, porte.NombreAppelsMéthodeOuvrir);
         }
+        #endregion
+
+        #region Feature 1
+        //Le lecteur possède une LED, accessible via ILecteur en appelant la méthode void Flash(bool r, bool g, bool b)
+        //Si un badge est détecté, un flash blanc est émis.
+        [Fact]
+        public void CasBadgeDetecte_FlashEmis()
+        {
+            // Etant donné un lecteur avec un badge détecté
+            var reader = new LecteurFake();
+            reader.SimulerPrésentationBadge();
+            var porte = new PorteSpy();
+            var moteur = new MoteurOuverture(porte);
+            var readerLed = new LedSpy();
+            var readerWithLed = new ReaderWithLed(reader, readerLed);
+
+            // Quand la méthode Flash est appelée
+            readerWithLed.Flash(true, false, false);
+
+            // Un flash blanc est émis
+            Assert.True(readerLed.IsWhiteFlashEmitted());
+        }
+        #endregion
     }
 }
