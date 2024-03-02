@@ -137,11 +137,10 @@ namespace ControleAcces.Test
         }
 
         [Fact] 
-        public void CasPorteOuverte_FlashVerte()
+        public void CasPorteFermee_FlashRouge()
         {
             // Arrange
             var porte = new PorteSpy();
-            porte.Ouvrir();
             var ledSpy = new LedSpy();
             var lecteurAvecLed = new LecteurAvecLed(new LecteurFake(), ledSpy);
 
