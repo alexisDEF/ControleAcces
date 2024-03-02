@@ -136,6 +136,21 @@ namespace ControleAcces.Test
             Assert.True(readerLed.IsWhiteFlashEmitted());
         }
 
+        [Fact] 
+        public void CasPorteOuverte_FlashRouge()
+        {
+            // Arrange
+            var porte = new PorteSpy();
+            porte.Ouvrir();
+            var ledSpy = new LedSpy();
+            var lecteurAvecLed = new LecteurAvecLed(new LecteurFake(), ledSpy);
+
+            // Act
+            lecteurAvecLed.Flash(true, false, false);
+
+            // Assert
+            Assert.True(ledSpy.IsRedFlashEmitted());
+        }
 
         #endregion
 
