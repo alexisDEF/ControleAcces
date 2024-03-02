@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleAcces", "ControleAcces\ControleAcces.csproj", "{DA98CEAD-711A-42D5-B07B-497DFB2CCC56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleAcces.Test", "ControleAcces.Test\ControleAcces.Test.csproj", "{02EC0129-B829-4A9B-94D0-EFBB3A74F22A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA98CEAD-711A-42D5-B07B-497DFB2CCC56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA98CEAD-711A-42D5-B07B-497DFB2CCC56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA98CEAD-711A-42D5-B07B-497DFB2CCC56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA98CEAD-711A-42D5-B07B-497DFB2CCC56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02EC0129-B829-4A9B-94D0-EFBB3A74F22A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02EC0129-B829-4A9B-94D0-EFBB3A74F22A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02EC0129-B829-4A9B-94D0-EFBB3A74F22A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02EC0129-B829-4A9B-94D0-EFBB3A74F22A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {043FC2F5-71BA-4E45-9402-F43EC3C2D97C}
+	EndGlobalSection
+EndGlobal
