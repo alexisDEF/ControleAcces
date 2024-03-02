@@ -18,4 +18,12 @@ internal class LecteurFake : ILecteur
     {
         _badgeDétectéAuProchainAppel = true;
     }
+    public void Flash(bool rouge, bool vert, bool bleu)
+    {
+        // Simuler l'émission d'un flash blanc
+        if (!rouge && !vert && !bleu)
+        {
+            // Ne fait rien dans ce contexte
+        }
+    }
 }

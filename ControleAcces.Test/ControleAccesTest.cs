@@ -130,11 +130,16 @@ namespace ControleAcces.Test
             var readerWithLed = new ReaderWithLed(reader, readerLed);
 
             // Quand la méthode Flash est appelée
-            readerWithLed.Flash(true, false, false);
+            readerWithLed.Flash(false, false, false);
 
             // Un flash blanc est émis
             Assert.True(readerLed.IsWhiteFlashEmitted());
         }
+
+
+        #endregion
+
+        #region Feature 2
         #endregion
     }
 }
