@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ControleAcces.Test.Utilities
 {
-    internal class ReaderWithLed : ILecteur
+    internal class LecteurAvecLed : ILecteur
     {
         private readonly ILecteur _lecteur;
         private readonly ILed _led;
 
-        public ReaderWithLed(ILecteur lecteur, ILed led)
+        public LecteurAvecLed(ILecteur lecteur, ILed led)
         {
             _lecteur = lecteur;
             _led = led;

@@ -10,9 +10,14 @@ namespace ControleAcces.Test.Utilities
     {
         private bool _isWhiteFlashEmitted;
 
+        private bool _isRedFlashEmitted;
+
         public void Flash(bool rouge, bool vert, bool bleu)
         {
-            if (!rouge && !vert && !bleu)
+            if(rouge)
+                _isRedFlashEmitted = true;
+
+            if (!vert && !bleu)
             {
                 _isWhiteFlashEmitted = true;
             }
@@ -21,6 +26,11 @@ namespace ControleAcces.Test.Utilities
         public bool IsWhiteFlashEmitted()
         {
             return _isWhiteFlashEmitted;
+        }
+
+        public bool IsRedFlashEmitted()
+        {
+            return _isRedFlashEmitted;
         }
     }
 }

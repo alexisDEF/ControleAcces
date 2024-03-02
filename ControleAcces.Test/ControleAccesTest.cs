@@ -122,22 +122,22 @@ namespace ControleAcces.Test
         public void CasBadgeDetecte_FlashEmis()
         {
             // Etant donné un lecteur avec un badge détecté
-            var reader = new LecteurFake();
-            reader.SimulerPrésentationBadge();
+            var lecteur = new LecteurFake();
+            lecteur.SimulerPrésentationBadge();
             var porte = new PorteSpy();
             var moteur = new MoteurOuverture(porte);
-            var readerLed = new LedSpy();
-            var readerWithLed = new ReaderWithLed(reader, readerLed);
+            var lecteurLed = new LedSpy();
+            var lecteurWithLed = new LecteurAvecLed(lecteur, lecteurLed);
 
             // Quand la méthode Flash est appelée
-            readerWithLed.Flash(false, false, false);
+            lecteurWithLed.Flash(false, false, false);
 
             // Un flash blanc est émis
-            Assert.True(readerLed.IsWhiteFlashEmitted());
+            Assert.True(lecteurLed.IsWhiteFlashEmitted());
         }
 
         [Fact] 
-        public void CasPorteOuverte_FlashRouge()
+        public void CasPorteOuverte_FlashVerte()
         {
             // Arrange
             var porte = new PorteSpy();
