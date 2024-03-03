@@ -60,7 +60,7 @@ internal class LecteurFake : ILecteur, IBipper, ILed
         _erreur = true;
     }
 
-    public void Flash(bool rouge, bool vert, bool bleu)
+    public void Flash(bool rouge, bool vert, bool violet)
     {
     }
 }

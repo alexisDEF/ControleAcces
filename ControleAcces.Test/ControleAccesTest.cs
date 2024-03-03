@@ -189,11 +189,27 @@ namespace ControleAcces.Test
             // Quand le Bip est appelé
             lecteur.Bip();
 
-            // Alors un bip est émis et un flash vert est émis
+            // Alors un double bip est émis et un flash rouge est émis
             Assert.True(bipperSpy.IsDoubleBipEmitted);
             Assert.True(ledSpy.IsRedFlashEmitted());
         }
 
+        [Fact]
+        public void CasErreur_BipEtFlashVioletEmis()
+        {
+            // Etant donné une erreur qui se produit
+            var ledSpy = new LedSpy();
+            var bipperSpy = new BipperSpy();
+            var lecteur = new LecteurFake(porteEstOuverte: true, bipperSpy); // Peu importe l'état de la porte ici, car c'est l'erreur qui doit déclencher le bip violet
+
+            // Quand le Bip est appelé
+            lecteur.SimulerErreur(); // Simuler une erreur
+            lecteur.Bip();
+
+            // Alors un bip et un flash violet sont émis
+            Assert.True(bipperSpy.IsBipEmitted);
+            Assert.True(ledSpy.IsVioletFlashEmitted);
+        }
         #endregion
     }
 }

@@ -8,6 +8,6 @@ namespace ControleAcces
 {
     public interface ILed
     {
-        void Flash(bool rouge, bool vert, bool bleu);
+        void Flash(bool rouge, bool vert, bool violet);
     }
 }
