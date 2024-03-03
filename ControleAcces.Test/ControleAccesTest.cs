@@ -164,17 +164,16 @@ namespace ControleAcces.Test
         public void CasPorteOuverte_BipEtFlashVertEmis()
         {
             // Etant donné une porte qui s'ouvre
-            var porte = new Porte { EstOuverte = true };
+            var porte = new PorteSpy() { EstOuverte = true };
             var ledSpy = new LedSpy();
-            var lecteurAvecLed = new LecteurAvecLed(new LecteurFake(), ledSpy);
             var bipperSpy = new BipperSpy();
-            var lecteurAvecBipper = new LecteurAvecBipper(lecteurAvecLed, bipperSpy);
+            var lecteur = new LecteurFake(porte.EstOuverte, bipperSpy, ledSpy);
 
             // Quand le Bip est appelé
-            lecteurAvecBipper.Bip();
+            lecteur.Bip();
 
             // Alors un bip est émis et un flash vert est émis
-            Assert.True(bipperSpy.IsBipEmitted());
+            Assert.True(bipperSpy.IsBipEmitted);
             Assert.True(ledSpy.IsGreenFlashEmitted());
         }
 
