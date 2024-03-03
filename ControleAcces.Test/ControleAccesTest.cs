@@ -177,6 +177,23 @@ namespace ControleAcces.Test
             Assert.True(ledSpy.IsGreenFlashEmitted());
         }
 
+        [Fact]
+        public void CasPorteFermee_DoubleBipEtFlashRouge()
+        {
+            // Etant donné une porte fermée
+            var porte = new PorteSpy() { EstOuverte = false };
+            var ledSpy = new LedSpy();
+            var bipperSpy = new BipperSpy();
+            var lecteur = new LecteurFake(porte.EstOuverte, bipperSpy, ledSpy);
+
+            // Quand le Bip est appelé
+            lecteur.Bip();
+
+            // Alors un bip est émis et un flash vert est émis
+            Assert.True(bipperSpy.IsDoubleBipEmitted);
+            Assert.True(ledSpy.IsRedFlashEmitted());
+        }
+
         #endregion
     }
 }
