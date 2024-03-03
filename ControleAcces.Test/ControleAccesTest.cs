@@ -1,4 +1,5 @@
 using ControleAcces.Test.Utilities;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ControleAcces.Test
 {
@@ -154,6 +155,29 @@ namespace ControleAcces.Test
         #endregion
 
         #region Feature 2
+        //Le lecteur possède un Bipper accessible via la méthode void Bip()
+        //Si la porte s'ouvre, un Bip et un flash vert sont émis.
+        //Si elle ne s'ouvre pas, deux Bips et un flash rouge sont émis.
+        //Si une erreur se produit, un Bip et un flash violet.
+
+        [Fact]
+        public void CasPorteOuverte_BipEtFlashVertEmis()
+        {
+            // Etant donné une porte qui s'ouvre
+            var porte = new Porte { EstOuverte = true };
+            var ledSpy = new LedSpy();
+            var lecteurAvecLed = new LecteurAvecLed(new LecteurFake(), ledSpy);
+            var bipperSpy = new BipperSpy();
+            var lecteurAvecBipper = new LecteurAvecBipper(lecteurAvecLed, bipperSpy);
+
+            // Quand le Bip est appelé
+            lecteurAvecBipper.Bip();
+
+            // Alors un bip est émis et un flash vert est émis
+            Assert.True(bipperSpy.IsBipEmitted());
+            Assert.True(ledSpy.IsGreenFlashEmitted());
+        }
+
         #endregion
     }
 }
