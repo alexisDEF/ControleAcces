@@ -35,7 +35,8 @@ internal class LecteurFake : ILecteur, IBipper, ILed
         if (_erreur)
         {
             // Bip violet en cas d'erreur
-            Flash(false, false, true); // Flash violet en cas d'erreur
+            _bipperSpy.EmitBip();
+            _ledSpy.Flash(false, false, true); // Flash violet en cas d'erreur
         }
         else
         {

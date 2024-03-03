@@ -43,5 +43,9 @@ namespace ControleAcces.Test.Utilities
         {
             return _isRedFlashEmitted;
         }
+        public bool IsVioletFlashEmitted()
+        {
+            return _isVioletFlashEmitted;
+        }
     }
 }

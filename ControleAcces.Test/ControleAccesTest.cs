@@ -200,7 +200,7 @@ namespace ControleAcces.Test
             // Etant donné une erreur qui se produit
             var ledSpy = new LedSpy();
             var bipperSpy = new BipperSpy();
-            var lecteur = new LecteurFake(porteEstOuverte: true, bipperSpy); // Peu importe l'état de la porte ici, car c'est l'erreur qui doit déclencher le bip violet
+            var lecteur = new LecteurFake(porteEstOuverte: true, bipperSpy, ledSpy); // Peu importe l'état de la porte ici, car c'est l'erreur qui doit déclencher le bip violet
 
             // Quand le Bip est appelé
             lecteur.SimulerErreur(); // Simuler une erreur
@@ -208,7 +208,7 @@ namespace ControleAcces.Test
 
             // Alors un bip et un flash violet sont émis
             Assert.True(bipperSpy.IsBipEmitted);
-            Assert.True(ledSpy.IsVioletFlashEmitted);
+            Assert.True(ledSpy.IsVioletFlashEmitted());
         }
         #endregion
     }
