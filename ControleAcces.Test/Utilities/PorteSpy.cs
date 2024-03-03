@@ -9,6 +9,6 @@ internal class PorteSpy : IPorte
     public void Ouvrir()
     {
         NombreAppelsMéthodeOuvrir++;
-        EstOuverte &= !EstOuverte;
+        EstOuverte = !EstOuverte;
     }
 }

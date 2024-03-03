@@ -164,10 +164,10 @@ namespace ControleAcces.Test
         public void CasPorteOuverte_BipEtFlashVertEmis()
         {
             // Etant donné une porte qui s'ouvre
-            var porte = new PorteSpy() { EstOuverte = true };
+            var porteSpy = new PorteSpy() { EstOuverte = true };
             var ledSpy = new LedSpy();
             var bipperSpy = new BipperSpy();
-            var lecteur = new LecteurFake(porte.EstOuverte, bipperSpy, ledSpy);
+            var lecteur = new LecteurFake(bipperSpy, ledSpy, porteSpy);
 
             // Quand le Bip est appelé
             lecteur.Bip();
@@ -181,10 +181,10 @@ namespace ControleAcces.Test
         public void CasPorteFermee_DoubleBipEtFlashRouge()
         {
             // Etant donné une porte fermée
-            var porte = new PorteSpy() { EstOuverte = false };
+            var porteSpy = new PorteSpy() { EstOuverte = false };
             var ledSpy = new LedSpy();
             var bipperSpy = new BipperSpy();
-            var lecteur = new LecteurFake(porte.EstOuverte, bipperSpy, ledSpy);
+            var lecteur = new LecteurFake(bipperSpy, ledSpy, porteSpy);
 
             // Quand le Bip est appelé
             lecteur.Bip();
@@ -198,9 +198,10 @@ namespace ControleAcces.Test
         public void CasErreur_BipEtFlashVioletEmis()
         {
             // Etant donné une erreur qui se produit
+            var porteSpy = new PorteSpy();
             var ledSpy = new LedSpy();
             var bipperSpy = new BipperSpy();
-            var lecteur = new LecteurFake(porteEstOuverte: true, bipperSpy, ledSpy); // Peu importe l'état de la porte ici, car c'est l'erreur qui doit déclencher le bip violet
+            var lecteur = new LecteurFake(bipperSpy, ledSpy); // Peu importe l'état de la porte ici, car c'est l'erreur qui doit déclencher le bip violet
 
             // Quand le Bip est appelé
             lecteur.SimulerErreur(); // Simuler une erreur
@@ -210,6 +211,23 @@ namespace ControleAcces.Test
             Assert.True(bipperSpy.IsBipEmitted);
             Assert.True(ledSpy.IsVioletFlashEmitted());
         }
+        [Fact]
+        public void CasNominal_BadgePresent_PortesOuvertes()
+        {
+            // Arrange
+            var porteSpy = new PorteSpy();
+            var ledSpy = new LedSpy();
+            var bipperSpy = new BipperSpy();
+            var lecteur = new LecteurFake(bipperSpy, ledSpy, porteSpy);
+            lecteur.SimulerPrésentationBadge();
+
+            // Act
+            lecteur.Bip();
+
+            // Assert
+            Assert.True(porteSpy.EstOuverte);
+        }
+        
         #endregion
     }
 }
