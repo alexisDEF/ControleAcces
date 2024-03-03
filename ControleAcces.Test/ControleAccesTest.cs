@@ -139,15 +139,15 @@ namespace ControleAcces.Test
         [Fact] 
         public void CasPorteFermee_FlashRouge()
         {
-            // Arrange
+            // Etant donné une porte fermée
             var porte = new PorteSpy();
             var ledSpy = new LedSpy();
             var lecteurAvecLed = new LecteurAvecLed(new LecteurFake(), ledSpy);
 
-            // Act
+            // Quand la méthode flash est appelée
             lecteurAvecLed.Flash(true, false, false);
 
-            // Assert
+            // Le flash rouge est émis
             Assert.True(ledSpy.IsRedFlashEmitted());
         }
 
