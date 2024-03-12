@@ -29,7 +29,7 @@ internal class LecteurFake : ILecteur, IBipper, ILed
     public void SimulerPrésentationBadge()
     {
         _badgeDétectéAuProchainAppel = true;
-        _porteSpy.Ouvrir();
+        _porteSpy?.Ouvrir();
     }
 
     public void Bip()

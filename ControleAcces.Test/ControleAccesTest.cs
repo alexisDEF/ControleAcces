@@ -123,11 +123,11 @@ namespace ControleAcces.Test
         public void CasBadgeDetecte_FlashEmis()
         {
             // Etant donné un lecteur avec un badge détecté
-            var lecteur = new LecteurFake();
-            lecteur.SimulerPrésentationBadge();
             var porte = new PorteSpy();
             var moteur = new MoteurOuverture(porte);
             var lecteurLed = new LedSpy();
+            var lecteur = new LecteurFake(ledSpy: lecteurLed,porteSpy: porte);
+            lecteur.SimulerPrésentationBadge();
             var lecteurWithLed = new LecteurAvecLed(lecteur, lecteurLed);
 
             // Quand la méthode Flash est appelée
